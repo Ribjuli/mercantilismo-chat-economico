@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const teacherQuestions = [
-        {
+{
             question: 'Chicos, Julián, Nannaput y Vicente me contaron que estuvieron trabajando el pensamiento mercantilista. Me encantaría que ustedes mismos me expliquen de qué se trata. ¿Les parece si empezamos con el contexto en el que surgieron sus ideas?',
             responses: [
                 {
@@ -288,57 +288,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let isResponding = false;
+    let currentQuestionIndex = 0;
 
     async function displayMessages() {
-        const firstMessage = messages[0];
-        const typingIndicator = await showTypingIndicator(firstMessage);
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        typingIndicator.remove();
-        await createMessageElement(firstMessage);
-        
-        messageInput.value = teacherQuestions[0].question;
+        const firstQuestion = teacherQuestions[currentQuestionIndex];
+        await createMessageElement({
+            sender: 'Profe Ceci 👩‍🏫',
+            content: firstQuestion.question,
+            avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388673649552130048/image0.jpg?ex=6861d69e&is=6860851e&hm=e7ea95c9114697f262bccc462343c29cb30ca63e7101cda01d94402e738257ca&=&format=webp&width=1174&height=1175'
+        });
+        messageInput.value = '';
         sendButton.disabled = false;
     }
-
-    let currentQuestionIndex = 0;
-    let firstMessageSent = false;
 
     sendButton.addEventListener('click', async () => {
         if (sendButton.disabled || isResponding || currentQuestionIndex >= teacherQuestions.length) return;
 
-        if (!firstMessageSent) {
-            firstMessageSent = true;
-            sendButton.disabled = true;
-            const currentQuestion = teacherQuestions[currentQuestionIndex];
-            await createMessageElement({
-                sender: 'Profe Ceci 👩‍🏫',
-                content: currentQuestion.question,
-                avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388673649552130048/image0.jpg?ex=6861d69e&is=6860851e&hm=e7ea95c9114697f262bccc462343c29cb30ca63e7101cda01d94402e738257ca&=&format=webp&width=1174&height=1175'
-            });
-            messageInput.value = '';
+        const currentQuestion = teacherQuestions[currentQuestionIndex];
+        isResponding = true;
+
+        for (let response of currentQuestion.responses) {
+            const typingIndicator = await showTypingIndicator(response);
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            typingIndicator.remove();
+            await createMessageElement(response);
             await new Promise(resolve => setTimeout(resolve, 1500));
-            isResponding = true;
-            for (let response of currentQuestion.responses) {
-                const typingIndicator = await showTypingIndicator(response);
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                typingIndicator.remove();
-                await createMessageElement(response);
-                await new Promise(resolve => setTimeout(resolve, 1500));
-            }
-            isResponding = false;
-            currentQuestionIndex++;
-            if (currentQuestionIndex >= teacherQuestions.length) {
-                messageInput.value = '¡Gracias por la explicación!';
-                sendButton.disabled = true;
-            } else {
-                messageInput.value = teacherQuestions[currentQuestionIndex].question;
-                sendButton.disabled = false;
-            }
+        }
+
+        isResponding = false;
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < teacherQuestions.length) {
+            messageInput.value = teacherQuestions[currentQuestionIndex].question;
         } else {
-            // Manejar mensajes subsiguientes si es necesario
+            messageInput.value = '¡Gracias por la explicación!';
+            sendButton.disabled = true;
         }
     });
 
     displayMessages();
 });
-
