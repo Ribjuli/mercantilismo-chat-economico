@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+ document.addEventListener('DOMContentLoaded', () => {
     const messagesContainer = document.getElementById('messages');
     const messageInput = document.getElementById('message-input');
     const sendButton = document.getElementById('send-button');
@@ -23,133 +23,192 @@ document.addEventListener('DOMContentLoaded', () => {
         updateMusicIcon();
     });
 
+
+    const teacherQuestions = [
+=======
     const messages = [
         {
             sender: 'Thomas Mun',
             content: '¡Hola profesora! Julian RIbaric, Nannaput Gogfai y Vicente Dellamagiore de 4to 5ta ESCCP me pidieron si con los capos del mercantilismo le contábamos qué onda.',
             image: 'https://media.discordapp.net/attachments/1182709690195513455/1386430595558543592/assets2Ftask_01jycjc670f3qsn83krrw90pd82F1750621174_img_0.png',
-            avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-        },
-        {
-            sender: 'Jean-Baptiste Colbert',
-            content: 'Comencemos con la Balanza Comercial. Este concepto es fundamental en el mercantilismo y representa la diferencia entre las exportaciones e importaciones de un país. Para nosotros, una balanza comercial positiva significa prosperidad nacional.',
-            avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-        },
-        {
-            sender: 'Jean-Baptiste Colbert',
-            content: 'En la Francia del siglo XVII, implementamos políticas estrictas para mantener una balanza comercial favorable. Esto incluía el control detallado de la calidad de los productos exportados y la restricción de importaciones de bienes de lujo.',
-            avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-        },
-        {
-            sender: 'Thomas Mun',
-            content: 'La balanza comercial positiva era crucial porque creíamos que la riqueza de una nación se medía por su acumulación de metales preciosos. Por eso fomentábamos las exportaciones y limitábamos las importaciones.',
-            avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-        },
-        {
-            sender: 'William Petty',
-            content: 'El Proteccionismo Económico fue otra política fundamental. Implementamos aranceles altos, subsidios a la producción local y regulaciones comerciales estrictas para proteger nuestras industrias de la competencia extranjera.',
-            avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-        },
-        {
-            sender: 'Antoine de Montchrestien',
-            content: 'Las famosas "Leyes de Navegación" son un ejemplo perfecto del proteccionismo. En Inglaterra, estas leyes exigían que las mercancías se transportaran en barcos ingleses con tripulación inglesa, fortaleciendo así la marina mercante nacional.',
-            avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-        },
-        {
-            sender: 'Jean-Baptiste Colbert',
-            content: 'En Francia, desarrollamos el sistema de "manufacturas reales", fábricas estatales protegidas que producían bienes de lujo como los tapices de Gobelins y la porcelana de Sèvres, contribuyendo al prestigio nacional.',
-            avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-        },
-        {
-            sender: 'Thomas Mun',
-            content: 'El Colonialismo fue el tercer pilar del mercantilismo. Las colonias eran esenciales como fuentes de materias primas y mercados cautivos para los productos metropolitanos.',
-            avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-        },
-        {
-            sender: 'William Petty',
-            content: 'El sistema colonial mercantilista establecía que las colonias solo podían comerciar con su metrópoli. Las colonias británicas en América, por ejemplo, debían vender sus materias primas exclusivamente a Gran Bretaña y comprar productos manufacturados británicos.',
-            avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-        },
-        {
-            sender: 'Jean-Baptiste Colbert',
-            content: 'Este sistema colonial dio origen al comercio triangular: Europa enviaba productos manufacturados a África, África proporcionaba esclavos a América, y América enviaba materias primas como azúcar, tabaco y algodón a Europa.',
-            avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
+            avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388657493101772870/merc-3.png?ex=6861c792&is=68607612&hm=24259093e0794d6d80ee4f9ab39889c5e4c3347996b02d90de55cf9a238d5676&=&format=webp&quality=lossless&width=316&height=356'
         }
     ];
 
     const teacherQuestions = [
+=======
+
+    const teacherQuestions = [
         {
-            question: '¡Muy interesante! Me gustaría saber más sobre estos conceptos del mercantilismo.',
-            responses: [
-                {
-                    sender: 'Thomas Mun',
-                    content: 'El mercantilismo también influyó significativamente en el desarrollo de las instituciones financieras modernas. Los bancos y las compañías comerciales por acciones surgieron para facilitar el comercio internacional y gestionar los flujos de metales preciosos.',
-                    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-                },
-                {
-                    sender: 'Jean-Baptiste Colbert',
-                    content: 'Las políticas mercantilistas fueron cruciales para el desarrollo industrial. La protección de industrias nacionales y el control del comercio internacional sentaron las bases para la Revolución Industrial. En Francia, por ejemplo, las manufacturas reales sirvieron como centros de innovación tecnológica.',
-                    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-                }
-            ]
-        },
-        {
-            question: '¿Podrían explicarme más sobre cómo el mercantilismo afectó a las colonias y su desarrollo?',
-            responses: [
-                {
-                    sender: 'William Petty',
-                    content: 'El impacto en las colonias fue profundo y duradero. El sistema mercantilista creó una relación de dependencia económica que persistió incluso después de la independencia política. Las colonias fueron forzadas a especializarse en la producción de materias primas, lo que limitó su desarrollo industrial.',
-                    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-                },
-                {
-                    sender: 'Thomas Mun',
-                    content: 'Además, el sistema colonial mercantilista estableció patrones de comercio internacional que aún influyen en la economía global. La especialización forzada de las colonias en materias primas creó desequilibrios económicos que algunos países aún están tratando de superar.',
-                    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-                }
-            ]
-        },
-        {
-            question: '¿Qué similitudes encuentran entre las políticas mercantilistas y algunas políticas económicas actuales?',
+            question: 'Chicos, Julián, Nannaput y Vicente me contaron que estuvieron trabajando el pensamiento mercantilista. Me encantaría que ustedes mismos me expliquen de qué se trata. ¿Les parece si empezamos con el contexto en el que surgieron sus ideas?',
             responses: [
                 {
                     sender: 'Jean-Baptiste Colbert',
-                    content: 'Las políticas proteccionistas modernas tienen muchas similitudes con el mercantilismo. Por ejemplo, los aranceles comerciales, los subsidios a industrias nacionales y las restricciones a la inversión extranjera son herramientas que aún se utilizan hoy en día para proteger las economías nacionales.',
-                    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
+                    content: '¡Por supuesto, profe! El mercantilismo se desarrolló entre los siglos XVI y XVIII, en un momento de enormes transformaciones: el surgimiento de los Estados modernos, el crecimiento del comercio internacional, y monarcas absolutistas como Luis XIV que buscaban consolidar su poder. En ese contexto, se creía que la riqueza de un país se medía por la cantidad de oro y plata que poseía.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388658211124416634/Gustave_Demoulin_-_Jean-Baptiste_Colbert_French_minister_of_finance_1898_-_MeisterDrucke-778571.png?ex=6861c83d&is=686076bd&hm=fdabea99372bb1a01794196233732de0d9b4765f7177715b8123bb798f540869&=&format=webp&quality=lossless&width=1199&height=1274'
                 },
                 {
-                    sender: 'William Petty',
-                    content: 'También vemos ecos del mercantilismo en las guerras comerciales contemporáneas y en la preocupación por las balanzas comerciales. Países como China han sido acusados de practicar políticas neomercantilistas al mantener artificialmente bajas sus monedas para impulsar las exportaciones.',
-                    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
-                }
-            ]
-        },
-        {
-            question: '¿Cómo influyó el mercantilismo en el desarrollo de los sistemas monetarios?',
-            responses: [
-                {
                     sender: 'Thomas Mun',
-                    content: 'El mercantilismo fue crucial en el desarrollo de los sistemas monetarios modernos. La acumulación de metales preciosos llevó a la creación de los primeros bancos centrales y al desarrollo de instrumentos financieros como las letras de cambio y los primeros billetes de banco.',
-                    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
+                    content: 'Con los descubrimientos de América y Asia, el comercio global explotó. Las potencias europeas empezaron a competir por colonias, rutas marítimas, y sobre todo por metales preciosos, que eran símbolo máximo de poder.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388657493101772870/merc-3.png?ex=6861c792&is=68607612&hm=24259093e0794d6d80ee4f9ab39889c5e4c3347996b02d90de55cf9a238d5676&=&format=webp&quality=lossless&width=316&height=356',
+                    image: 'https://media.discordapp.net/attachments/1182709690195513455/1388665641237479535/mercantilismo-ingles.png?ex=6861cf29&is=68607da9&hm=21da9b0a0fe688c0bc185b456ed6ad2e4686ba0a5631acaa6f413cf60c316b40&=&format=webp&quality=lossless&width=1437&height=1150'
+                },
+                {
+                    sender: 'Antonio Serra',
+                    content: 'Todavía no existía el capitalismo como lo conocemos hoy. El Estado tenía un rol central: debía intervenir activamente para fortalecer la economía. Nuestro objetivo era aumentar la riqueza nacional mediante el comercio exterior: más exportaciones, menos importaciones.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388659518187245719/assets2Ftask_01jywd660zfdc8sb54sm1h192m2F1751152596_img_0.png?ex=6861c975&is=686077f5&hm=267aff4fe65ee2851c021f037a04458b0f810cce4bf6e3ba79a73d4d081f5ddb&=&format=webp&quality=lossless&width=1274&height=1274'
+                },
+                {
+                    sender: 'Giovanni Botero',
+                    content: 'Y no se trataba solo de economía. La riqueza permitía financiar ejércitos, sostener conquistas y afirmar el control interno. Por eso nuestras teorías eran también una estrategia política: economía y poder iban de la mano.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388660063899746334/assets2Ftask_01jywdawrje6q9jjm1dypd76992F1751152749_img_0.png?ex=6861c9f7&is=68607877&hm=d105d9486a21e10131dba45bc762d7148a71e55517dbd377b35b3df3a40741f8&=&format=webp&quality=lossless&width=1274&height=1274'
                 },
                 {
                     sender: 'Jean-Baptiste Colbert',
-                    content: 'La necesidad de gestionar grandes cantidades de oro y plata también llevó al desarrollo de sistemas contables más sofisticados y a la creación de las primeras bolsas de valores. El Banco de Inglaterra, por ejemplo, fue fundado en 1694 en parte para gestionar la deuda pública y facilitar el comercio internacional.',
-                    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
+                    content: 'Y vale aclarar que el mercantilismo no se aplicaba igual en todos los países: en Francia se enfocaba en la producción industrial, en Inglaterra en el comercio marítimo, y en España y Portugal en la extracción de metales de América.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388658211124416634/Gustave_Demoulin_-_Jean-Baptiste_Colbert_French_minister_of_finance_1898_-_MeisterDrucke-778571.png?ex=6861c83d&is=686076bd&hm=fdabea99372bb1a01794196233732de0d9b4765f7177715b8123bb798f540869&=&format=webp&quality=lossless&width=1199&height=1274'
                 }
             ]
         },
         {
-            question: '¿Qué impacto tuvo el mercantilismo en el desarrollo de la navegación y la tecnología marítima?',
+            question: '¡Qué interesante! Y ya que hablamos de distintos enfoques, ¿cuál de ustedes se considera el principal exponente del mercantilismo?',
             responses: [
                 {
-                    sender: 'Antoine de Montchrestien',
-                    content: 'El mercantilismo impulsó enormemente el desarrollo naval. La necesidad de proteger las rutas comerciales y mantener el dominio marítimo llevó a importantes avances en la construcción de barcos, la navegación y la cartografía. Las potencias europeas competían por desarrollar barcos más rápidos y resistentes.',
-                    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
+                    sender: 'Jean-Baptiste Colbert',
+                    content: 'Con permiso, creo que ese soy yo. Fui ministro de finanzas del Rey Luis XIV. Mi gestión marcó un antes y un después en la economía francesa. Implementé una política económica para fortalecer la industria nacional, limitar importaciones y fomentar exportaciones. Todo con un objetivo claro: que el oro se quedara en Francia.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388658211124416634/Gustave_Demoulin_-_Jean-Baptiste_Colbert_French_minister_of_finance_1898_-_MeisterDrucke-778571.png?ex=6861c83d&is=686076bd&hm=fdabea99372bb1a01794196233732de0d9b4765f7177715b8123bb798f540869&=&format=webp&quality=lossless&width=1199&height=1274'
+                }
+            ]
+        },
+        {
+            question: '¿Y cómo lo lograste concretamente?',
+            responses: [
+                {
+                    sender: 'Jean-Baptiste Colbert',
+                    content: '– Creé y financié manufacturas reales, fábricas estatales para competir con los productos extranjeros.\n– Impuse altos aranceles para proteger la industria nacional.\n– Mejoré la infraestructura: rutas, puertos, canales… todo para facilitar el comercio.\n– Y fomenté compañías comerciales que comerciaban con las colonias, asegurando mercados y materias primas.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388658211124416634/Gustave_Demoulin_-_Jean-Baptiste_Colbert_French_minister_of_finance_1898_-_MeisterDrucke-778571.png?ex=6861c83d&is=686076bd&hm=fdabea99372bb1a01794196233732de0d9b4765f7177715b8123bb798f540869&=&format=webp&quality=lossless&width=1199&height=1274'
                 },
                 {
                     sender: 'Thomas Mun',
-                    content: 'También se desarrollaron nuevos instrumentos de navegación y técnicas de mapeo. La Compañía de las Indias Orientales, por ejemplo, financió numerosas expediciones que contribuyeron al conocimiento geográfico y al desarrollo de la navegación astronómica.',
-                    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg'
+                    content: 'Eso también lo hicimos en Inglaterra. Yo defendí estas ideas en mi obra La riqueza de Inglaterra por el comercio exterior. Sostuve que un país debe exportar más de lo que importa para acumular metales preciosos. Además, apoyé que el Estado intervenga para fomentar la navegación, proteger nuestras industrias y controlar el comercio colonial.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388657493101772870/merc-3.png?ex=6861c792&is=68607612&hm=24259093e0794d6d80ee4f9ab39889c5e4c3347996b02d90de55cf9a238d5676&=&format=webp&quality=lossless&width=316&height=356'
+                }
+            ]
+        },
+        {
+            question: 'Entonces, ustedes no pensaban que la economía fuera algo neutro, ¿no?',
+            responses: [
+                {
+                    sender: 'Jean-Baptiste Colbert',
+                    content: 'En absoluto. La economía era una herramienta del poder del Estado. Intervenir no solo era válido: era necesario.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388658211124416634/Gustave_Demoulin_-_Jean-Baptiste_Colbert_French_minister_of_finance_1898_-_MeisterDrucke-778571.png?ex=6861c83d&is=686076bd&hm=fdabea99372bb1a01794196233732de0d9b4765f7177715b8123bb798f540869&=&format=webp&quality=lossless&width=1199&height=1274'
+                }
+            ]
+        },
+        {
+            question: '¿Y cuáles eran las ideas principales que defendían?',
+            responses: [
+                {
+                    sender: 'Jean-Baptiste Colbert',
+                    content: 'Dos postulados fundamentales del mercantilismo son:\n– La balanza comercial favorable\n– Y el proteccionismo económico',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388658211124416634/Gustave_Demoulin_-_Jean-Baptiste_Colbert_French_minister_of_finance_1898_-_MeisterDrucke-778571.png?ex=6861c83d&is=686076bd&hm=fdabea99372bb1a01794196233732de0d9b4765f7177715b8123bb798f540869&=&format=webp&quality=lossless&width=1199&height=1274'
+                },
+                {
+                    sender: 'Thomas Mun',
+                    content: 'Con la balanza comercial nos referimos a exportar más de lo que se importa. Eso trae más riqueza al país, porque los pagos de otros países llegaban en oro y plata. Una balanza positiva fortalece al Estado; una negativa, lo debilita.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388657493101772870/merc-3.png?ex=6861c792&is=68607612&hm=24259093e0794d6d80ee4f9ab39889c5e4c3347996b02d90de55cf9a238d5676&=&format=webp&quality=lossless&width=316&height=356',
+                    image: 'https://media.discordapp.net/attachments/1182709690195513455/1388663355119763486/assets2Ftask_01jywe15veeahahfp8r36jcksn2F1751153511_img_0.png?ex=6861cd07&is=68607b87&hm=1f3e867b0b15a81f5f58fb0a756d386b9420592a786f9f85739b8b1d117b30b6&=&format=webp&quality=lossless&width=1747&height=1165'
+                },
+                {
+                    sender: 'Antonio Serra',
+                    content: 'Y para lograr esa balanza, necesitábamos proteger la economía local. Por eso apoyábamos el proteccionismo:\n– Imponer aranceles a productos extranjeros\n– Prohibir o limitar ciertas importaciones\n– Apoyar a productores locales con subsidios\nTodo esto apuntaba a que lo nacional tuviera más ventaja, y no depender del extranjero.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388659518187245719/assets2Ftask_01jywd660zfdc8sb54sm1h192m2F1751152596_img_0.png?ex=6861c975&is=686077f5&hm=267aff4fe65ee2851c021f037a04458b0f810cce4bf6e3ba79a73d4d081f5ddb&=&format=webp&quality=lossless&width=1274&height=1274'
+                },
+                {
+                    sender: 'Jean-Baptiste Colbert',
+                    content: 'Y no termina ahí. Otros pilares del mercantilismo fueron:\n– El colonialismo, para acceder a materias primas y mercados cautivos\n– La mano de obra abundante, para producir más y más barato\n– Y el comercio marítimo, que garantizaba rutas seguras y mercados globales',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388658211124416634/Gustave_Demoulin_-_Jean-Baptiste_Colbert_French_minister_of_finance_1898_-_MeisterDrucke-778571.png?ex=6861c83d&is=686076bd&hm=fdabea99372bb1a01794196233732de0d9b4765f7177715b8123bb798f540869&=&format=webp&quality=lossless&width=1199&height=1274'
+                },
+                {
+                    sender: 'Giovanni Botero',
+                    content: 'Todo estaba organizado: el comercio, la industria, los impuestos… El Estado no se quedaba mirando, dirigía activamente la economía.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388660063899746334/assets2Ftask_01jywdawrje6q9jjm1dypd76992F1751152749_img_0.png?ex=6861c9f7&is=68607877&hm=d105d9486a21e10131dba45bc762d7148a71e55517dbd377b35b3df3a40741f8&=&format=webp&quality=lossless&width=1274&height=1274'
+                }
+            ]
+        },
+        {
+            question: '¡Qué claridad! Me queda una duda. ¿Qué piensan de William Petty? Lo vi en algunos textos pero no lo veo acá.',
+            responses: [
+                {
+                    sender: 'Thomas Mun',
+                    content: 'Buena pregunta. Petty fue un pionero de la estadística económica. No fue un mercantilista puro, pero sus estudios sobre población, impuestos y tierras influyeron mucho en nuestro tiempo.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388657493101772870/merc-3.png?ex=6861c792&is=68607612&hm=24259093e0794d6d80ee4f9ab39889c5e4c3347996b02d90de55cf9a238d5676&=&format=webp&quality=lossless&width=316&height=356'
+                },
+                {
+                    sender: 'Jean-Baptiste Colbert',
+                    content: 'Y hay otros pensadores que también merecen ser mencionados, aunque no llegaron a tener tanto impacto como el mío…\n– Luis Ortiz, en España, ya hablaba en el siglo XVI de fortalecer la industria local.\n– Gasparo Scaruffi, propuso reformas monetarias en Italia.\n– Josiah Child, en Inglaterra, defendió el control estatal del comercio.\n– Y Antoine de Montchrestien, uno de los primeros en hablar de "economía política".',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388658211124416634/Gustave_Demoulin_-_Jean-Baptiste_Colbert_French_minister_of_finance_1898_-_MeisterDrucke-778571.png?ex=6861c83d&is=686076bd&hm=fdabea99372bb1a01794196233732de0d9b4765f7177715b8123bb798f540869&=&format=webp&quality=lossless&width=1199&height=1274'
+                }
+            ]
+        },
+        {
+            question: '¡Qué repaso tan completo! ¿Podrían cerrar con una reflexión general sobre el impacto de sus ideas?',
+            responses: [
+                {
+                    sender: 'Giovanni Botero',
+                    content: 'El mercantilismo no fue solo una teoría económica, sino una forma de organizar el poder. Su objetivo era fortalecer al país acumulando riqueza, controlando el comercio y haciendo que el Estado tuviera un rol activo.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388660063899746334/assets2Ftask_01jywdawrje6q9jjm1dypd76992F1751152749_img_0.png?ex=6861c9f7&is=68607877&hm=d105d9486a21e10131dba45bc762d7148a71e55517dbd377b35b3df3a40741f8&=&format=webp&quality=lossless&width=1274&height=1274'
+                },
+                {
+                    sender: 'Jean-Baptiste Colbert',
+                    content: 'Nosotros demostramos que el mercado no se regula solo. Si el Estado no interviene, se pierde riqueza, se desordena la economía y se debilita la soberanía.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388658211124416634/Gustave_Demoulin_-_Jean-Baptiste_Colbert_French_minister_of_finance_1898_-_MeisterDrucke-778571.png?ex=6861c83d&is=686076bd&hm=fdabea99372bb1a01794196233732de0d9b4765f7177715b8123bb798f540869&=&format=webp&quality=lossless&width=1199&height=1274'
+                },
+                {
+                    sender: 'Antonio Serra',
+                    content: 'Incluso hoy, cuando un país impone aranceles o protege sectores estratégicos, está aplicando principios mercantilistas, aunque no lo diga así.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388659518187245719/assets2Ftask_01jywd660zfdc8sb54sm1h192m2F1751152596_img_0.png?ex=6861c975&is=686077f5&hm=267aff4fe65ee2851c021f037a04458b0f810cce4bf6e3ba79a73d4d081f5ddb&=&format=webp&quality=lossless&width=1274&height=1274'
+                },
+                {
+                    sender: 'Thomas Mun',
+                    content: 'Nuestro legado fue mostrar que la economía está ligada a intereses políticos y decisiones estatales. Sin dirección, la riqueza se concentra o se fuga.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388657493101772870/merc-3.png?ex=6861c792&is=68607612&hm=24259093e0794d6d80ee4f9ab39889c5e4c3347996b02d90de55cf9a238d5676&=&format=webp&quality=lossless&width=316&height=356'
+                },
+                {
+                    sender: 'Giovanni Botero',
+                    content: 'Y que el comercio, además de ser intercambio, es también una forma de poder. Las flotas, rutas, tratados y colonias eran parte de esa disputa.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388660063899746334/assets2Ftask_01jywdawrje6q9jjm1dypd76992F1751152749_img_0.png?ex=6861c9f7&is=68607877&hm=d105d9486a21e10131dba45bc762d7148a71e55517dbd377b35b3df3a40741f8&=&format=webp&quality=lossless&width=1274&height=1274'
+                },
+                {
+                    sender: 'Jean-Baptiste Colbert',
+                    content: 'Hoy el mundo cambió, pero muchas de nuestras ideas siguen presentes. Sin mercantilismo no habría habido Estados modernos ni planificación económica.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388658211124416634/Gustave_Demoulin_-_Jean-Baptiste_Colbert_French_minister_of_finance_1898_-_MeisterDrucke-778571.png?ex=6861c83d&is=686076bd&hm=fdabea99372bb1a01794196233732de0d9b4765f7177715b8123bb798f540869&=&format=webp&quality=lossless&width=1199&height=1274'
+                },
+                {
+                    sender: 'Thomas Mun',
+                    content: 'Conocer estas ideas no es solo estudiar el pasado. Es entender el presente y pensar con más herramientas el futuro.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388657493101772870/merc-3.png?ex=6861c792&is=68607612&hm=24259093e0794d6d80ee4f9ab39889c5e4c3347996b02d90de55cf9a238d5676&=&format=webp&quality=lossless&width=316&height=356'
+                }
+            ]
+        },
+        {
+            question: '¡Excelente reflexión, chicos! Claros, organizados, creativos y con mucha profundidad. ¡Felicitaciones a Julián, Nannaput y Vicente por este gran trabajo!',
+            responses: [
+                {
+                    sender: 'Jean-Baptiste Colbert',
+                    content: 'Un honor, profe. Que viva el orden, el oro y las exportaciones.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388658211124416634/Gustave_Demoulin_-_Jean-Baptiste_Colbert_French_minister_of_finance_1898_-_MeisterDrucke-778571.png?ex=6861c83d&is=686076bd&hm=fdabea99372bb1a01794196233732de0d9b4765f7177715b8123bb798f540869&=&format=webp&quality=lossless&width=1199&height=1274',
+                    image: 'https://media.discordapp.net/attachments/1182709690195513455/1388664706998210623/image.png?ex=6861ce4a&is=68607cca&hm=cae58f6690d64056affdb0c5604f21d0fba1775e779fd2a043b3a976ea2e692e&=&format=webp&quality=lossless&width=1286&height=1274'
+                },
+                {
+                    sender: 'Thomas Mun',
+                    content: 'Y recuerden: en economía, el que comercia… domina.',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388657493101772870/merc-3.png?ex=6861c792&is=68607612&hm=24259093e0794d6d80ee4f9ab39889c5e4c3347996b02d90de55cf9a238d5676&=&format=webp&quality=lossless&width=316&height=356'
+                },
+                {
+                    sender: 'Antonio Serra',
+                    content: 'Hasta la próxima clase. ¡Gracias por dejarnos contar nuestra visión!',
+                    avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388659518187245719/assets2Ftask_01jywd660zfdc8sb54sm1h192m2F1751152596_img_0.png?ex=6861c975&is=686077f5&hm=267aff4fe65ee2851c021f037a04458b0f810cce4bf6e3ba79a73d4d081f5ddb&=&format=webp&quality=lossless&width=1274&height=1274'
                 }
             ]
         }
@@ -159,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Promise(resolve => {
             setTimeout(() => {
                 const messageDiv = document.createElement('div');
-                messageDiv.className = `message ${message.sender === 'Profesora' ? 'sent' : 'received'}`;
+                messageDiv.className = `message ${message.sender === 'Profe Ceci 👩‍🏫' || message.sender === 'Profesora' ? 'sent' : 'received'}`;
 
                 const avatarImg = document.createElement('img');
                 avatarImg.src = message.avatar;
@@ -177,6 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const textDiv = document.createElement('div');
                 textDiv.textContent = message.content;
+                textDiv.style.whiteSpace = 'pre-line';
 
                 contentDiv.appendChild(nameDiv);
                 contentDiv.appendChild(textDiv);
@@ -196,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 timestamp.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                 contentDiv.appendChild(timestamp);
 
-                if (message.sender === 'Profesora') {
+                if (message.sender === 'Profe Ceci 👩‍🏫' || message.sender === 'Profesora') {
                     messageDiv.appendChild(contentDiv);
                     messageDiv.appendChild(avatarImg);
                 } else {
@@ -245,54 +305,34 @@ document.addEventListener('DOMContentLoaded', () => {
     let isResponding = false;
 
     async function displayMessages() {
-        // Show only the first message from Thomas Mun
         const firstMessage = messages[0];
         const typingIndicator = await showTypingIndicator(firstMessage);
         await new Promise(resolve => setTimeout(resolve, 2000));
         typingIndicator.remove();
         await createMessageElement(firstMessage);
         
-        // Enable the send button for teacher's first response
         messageInput.value = teacherQuestions[0].question;
         sendButton.disabled = false;
     }
 
     let currentQuestionIndex = 0;
-    let currentMessageIndex = 1; // Start from second message since first is already shown
+    let firstMessageSent = false;
 
     sendButton.addEventListener('click', async () => {
-        if (sendButton.disabled || isResponding) return;
-        
-        const currentQuestion = teacherQuestions[currentQuestionIndex];
-        
-        // Send teacher's question and disable input
-        sendButton.disabled = true;
-        await createMessageElement({
-            sender: 'Profesora',
-            content: currentQuestion.question,
-            avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1386430572460638409/WhatsApp_Image_2025-06-22_at_16.36.17_921c517f.jpg'
-        });
+        if (sendButton.disabled || isResponding || currentQuestionIndex >= teacherQuestions.length) return;
 
-        // Clear the input after sending
-        messageInput.value = '';
-
-        // Add a delay before showing the typing indicator
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        // Show next set of messages from the initial conversation
-        isResponding = true;
-        for (let i = 0; i < 3 && currentMessageIndex < messages.length; i++, currentMessageIndex++) {
-            const message = messages[currentMessageIndex];
-            const typingIndicator = await showTypingIndicator(message);
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            typingIndicator.remove();
-            await createMessageElement(message);
+        if (!firstMessageSent) {
+            firstMessageSent = true;
+            sendButton.disabled = true;
+            const currentQuestion = teacherQuestions[currentQuestionIndex];
+            await createMessageElement({
+                sender: 'Profe Ceci 👩‍🏫',
+                content: currentQuestion.question,
+                avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1386430572460638409/WhatsApp_Image_2025-06-22_at_16.36.17_921c517f.jpg'
+            });
+            messageInput.value = '';
             await new Promise(resolve => setTimeout(resolve, 1500));
-        }
-
-        // If we've shown all initial messages, proceed with Q&A responses
-        if (currentMessageIndex >= messages.length) {
-            // Show responses with typing indicators
+            isResponding = true;
             for (let response of currentQuestion.responses) {
                 const typingIndicator = await showTypingIndicator(response);
                 await new Promise(resolve => setTimeout(resolve, 2000));
@@ -300,9 +340,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 await createMessageElement(response);
                 await new Promise(resolve => setTimeout(resolve, 1500));
             }
-
+            isResponding = false;
             currentQuestionIndex++;
-            
             if (currentQuestionIndex >= teacherQuestions.length) {
                 messageInput.value = '¡Gracias por la explicación!';
                 sendButton.disabled = true;
@@ -311,12 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 sendButton.disabled = false;
             }
         } else {
-            // Enable send button for next interaction
-            messageInput.value = teacherQuestions[currentQuestionIndex].question;
-            sendButton.disabled = false;
+            // Handle subsequent messages if needed
         }
-        
-        isResponding = false;
     });
 
     displayMessages();
