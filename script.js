@@ -23,9 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
         updateMusicIcon();
     });
 
+    // Pega aquí tu array de preguntas y respuestas:
     const teacherQuestions = [
-{
-            question: 'Buenas! Julián Ribaric, Nannaput Gogfai y Vicente Della Maggiore de 4to 5ta tt me contaron que estuvieron trabajando el pensamiento mercantilista. Me encantaría que ustedes mismos me expliquen de qué se trata. ¿Les parece si empezamos con el contexto en el que surgieron sus ideas?',
+        {
+            question: 'Chicos, Julián, Nannaput y Vicente me contaron que estuvieron trabajando el pensamiento mercantilista. Me encantaría que ustedes mismos me expliquen de qué se trata. ¿Les parece si empezamos con el contexto en el que surgieron sus ideas?',
             responses: [
                 {
                     sender: 'Jean-Baptiste Colbert',
@@ -199,6 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
+    if (teacherQuestions.length > 0) {
+        messageInput.value = teacherQuestions[0].question;
+    }
+
+
     function createMessageElement(message, delay = 0) {
         return new Promise(resolve => {
             setTimeout(() => {
@@ -259,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function createTypingIndicator(sender) {
         const typingDiv = document.createElement('div');
         typingDiv.className = 'message received typing-message';
-        
+
         const avatarImg = document.createElement('img');
         avatarImg.src = sender.avatar;
         avatarImg.className = 'avatar';
@@ -290,41 +296,95 @@ document.addEventListener('DOMContentLoaded', () => {
     let isResponding = false;
     let currentQuestionIndex = 0;
 
-    async function displayMessages() {
-        const firstQuestion = teacherQuestions[currentQuestionIndex];
-        await createMessageElement({
-            sender: 'Profe Ceci 👩‍🏫',
-            content: firstQuestion.question,
-            avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388673649552130048/image0.jpg?ex=6861d69e&is=6860851e&hm=e7ea95c9114697f262bccc462343c29cb30ca63e7101cda01d94402e738257ca&=&format=webp&width=1174&height=1175'
-        });
-        messageInput.value = '';
-        sendButton.disabled = false;
-    }
-
-    sendButton.addEventListener('click', async () => {
-        if (sendButton.disabled || isResponding || currentQuestionIndex >= teacherQuestions.length) return;
-
-        const currentQuestion = teacherQuestions[currentQuestionIndex];
-        isResponding = true;
+    async function showReferentsResponses() {
+        const currentQuestion = teacherQuestions[currentQuestionIndex - 1];
+        if (!currentQuestion || !currentQuestion.responses) return;
 
         for (let response of currentQuestion.responses) {
-            const typingIndicator = await showTypingIndicator(response);
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            // Espera 1 segundo antes de que empiece a escribir alguien
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // Mostrar typing indicator con el avatar del referente
+            const typingIndicator = createTypingIndicator({ avatar: response.avatar });
+            messagesContainer.appendChild(typingIndicator);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            await new Promise(resolve => setTimeout(resolve, 2000)); // 2 segundos de "escribiendo"
+
             typingIndicator.remove();
+
             await createMessageElement(response);
-            await new Promise(resolve => setTimeout(resolve, 1500));
+        }
+    }
+
+
+    async function advanceConversation() {
+        if (isResponding) return;
+        isResponding = true;
+
+        // Si es la primera vez, mostrar la primera pregunta
+        if (currentQuestionIndex === 0) {
+            const firstQuestion = teacherQuestions[currentQuestionIndex];
+            // Mostrar mensaje en el input
+            messageInput.value = firstQuestion.question;
+
+            // Esperar un pequeño delay si quieres (opcional)
+            // await new Promise(resolve => setTimeout(resolve, 500));
+
+            await createMessageElement({
+                sender: 'Profe Ceci 👩‍🏫',
+                content: firstQuestion.question,
+                avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388673649552130048/image0.jpg?ex=6861d69e&is=6860851e&hm=e7ea95c9114697f262bccc462343c29cb30ca63e7101cda01d94402e738257ca&=&format=webp&width=1174&height=1175'
+            });
+            currentQuestionIndex++;
+            await showReferentsResponses();
+
+            // Actualizar el input con la próxima pregunta (si hay)
+            if (currentQuestionIndex < teacherQuestions.length) {
+                messageInput.value = teacherQuestions[currentQuestionIndex].question;
+            } else {
+                messageInput.value = '¡Gracias por la explicación!';
+                sendButton.disabled = true;
+            }
+
+            isResponding = false;
+            return;
         }
 
-        isResponding = false;
-        currentQuestionIndex++;
-
+        // Mostrar la siguiente pregunta de la profe (si hay)
         if (currentQuestionIndex < teacherQuestions.length) {
-            messageInput.value = teacherQuestions[currentQuestionIndex].question;
+            const currentQuestion = teacherQuestions[currentQuestionIndex];
+            // Mostrar mensaje en el input
+            messageInput.value = currentQuestion.question;
+
+            await createMessageElement({
+                sender: 'Profe Ceci 👩‍🏫',
+                content: currentQuestion.question,
+                avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388673649552130048/image0.jpg?ex=6861d69e&is=6860851e&hm=e7ea95c9114697f262bccc462343c29cb30ca63e7101cda01d94402e738257ca&=&format=webp&width=1174&height=1175'
+            });
+            currentQuestionIndex++;
+            await showReferentsResponses();
+
+            // Actualizar el input con la próxima pregunta (si hay)
+            if (currentQuestionIndex < teacherQuestions.length) {
+                messageInput.value = teacherQuestions[currentQuestionIndex].question;
+            } else {
+                messageInput.value = '¡Gracias por la explicación!';
+                sendButton.disabled = true;
+            }
         } else {
             messageInput.value = '¡Gracias por la explicación!';
             sendButton.disabled = true;
         }
-    });
+        isResponding = false;
+    }
 
-    displayMessages();
+
+    // El botón solo avanza la conversación
+    sendButton.addEventListener('click', advanceConversation);
+
+    // Deshabilitar input
+    messageInput.setAttribute('readonly', true);
 });
+
+
