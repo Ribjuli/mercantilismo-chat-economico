@@ -210,7 +210,7 @@
                 avatarImg.src = message.avatar;
                 avatarImg.className = 'avatar';
                 avatarImg.onerror = function() {
-                    this.src = 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg';
+                    this.src = 'https://media.discordapp.net/attachments/1182709690195513455/1388673649552130048/image0.jpg?ex=6861d69e&is=6860851e&hm=e7ea95c9114697f262bccc462343c29cb30ca63e7101cda01d94402e738257ca&=&format=webp&width=1174&height=1175';
                 };
 
                 const contentDiv = document.createElement('div');
@@ -265,7 +265,7 @@
         avatarImg.src = sender.avatar;
         avatarImg.className = 'avatar';
         avatarImg.onerror = function() {
-            this.src = 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg';
+            this.src = 'https://media.discordapp.net/attachments/1182709690195513455/1388673649552130048/image0.jpg?ex=6861d69e&is=6860851e&hm=e7ea95c9114697f262bccc462343c29cb30ca63e7101cda01d94402e738257ca&=&format=webp&width=1174&height=1175';
         };
 
         const indicatorDiv = document.createElement('div');
@@ -314,7 +314,7 @@
             await createMessageElement({
                 sender: 'Profe Ceci 👩‍🏫',
                 content: currentQuestion.question,
-                avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1386430572460638409/WhatsApp_Image_2025-06-22_at_16.36.17_921c517f.jpg'
+                avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388673649552130048/image0.jpg?ex=6861d69e&is=6860851e&hm=e7ea95c9114697f262bccc462343c29cb30ca63e7101cda01d94402e738257ca&=&format=webp&width=1174&height=1175'
             });
             messageInput.value = '';
             await new Promise(resolve => setTimeout(resolve, 1500));
