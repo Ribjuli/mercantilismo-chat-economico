@@ -25,20 +25,6 @@
 
 
     const teacherQuestions = [
-=======
-    const messages = [
-        {
-            sender: 'Thomas Mun',
-            content: '¡Hola profesora! Julian RIbaric, Nannaput Gogfai y Vicente Dellamagiore de 4to 5ta ESCCP me pidieron si con los capos del mercantilismo le contábamos qué onda.',
-            image: 'https://media.discordapp.net/attachments/1182709690195513455/1386430595558543592/assets2Ftask_01jycjc670f3qsn83krrw90pd82F1750621174_img_0.png',
-            avatar: 'https://media.discordapp.net/attachments/1182709690195513455/1388657493101772870/merc-3.png?ex=6861c792&is=68607612&hm=24259093e0794d6d80ee4f9ab39889c5e4c3347996b02d90de55cf9a238d5676&=&format=webp&quality=lossless&width=316&height=356'
-        }
-    ];
-
-    const teacherQuestions = [
-=======
-
-    const teacherQuestions = [
         {
             question: 'Chicos, Julián, Nannaput y Vicente me contaron que estuvieron trabajando el pensamiento mercantilista. Me encantaría que ustedes mismos me expliquen de qué se trata. ¿Les parece si empezamos con el contexto en el que surgieron sus ideas?',
             responses: [
