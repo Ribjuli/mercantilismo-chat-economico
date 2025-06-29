@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const teacherQuestions = [
 {
-            question: 'Chicos, Julián, Nannaput y Vicente me contaron que estuvieron trabajando el pensamiento mercantilista. Me encantaría que ustedes mismos me expliquen de qué se trata. ¿Les parece si empezamos con el contexto en el que surgieron sus ideas?',
+            question: 'Buenas! Julián Ribaric, Nannaput Gogfai y Vicente Della Maggiore de 4to 5ta tt me contaron que estuvieron trabajando el pensamiento mercantilista. Me encantaría que ustedes mismos me expliquen de qué se trata. ¿Les parece si empezamos con el contexto en el que surgieron sus ideas?',
             responses: [
                 {
                     sender: 'Jean-Baptiste Colbert',
