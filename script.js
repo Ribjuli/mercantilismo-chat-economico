@@ -1,11 +1,11 @@
- document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const messagesContainer = document.getElementById('messages');
     const messageInput = document.getElementById('message-input');
     const sendButton = document.getElementById('send-button');
     const bgMusic = document.getElementById('background-music');
     const toggleMusicBtn = document.getElementById('toggle-music');
-    
-    // Music control
+
+    // Control de música
     let isMusicPlaying = true;
     bgMusic.volume = 0.2;
 
@@ -22,7 +22,6 @@
         isMusicPlaying = !isMusicPlaying;
         updateMusicIcon();
     });
-
 
     const teacherQuestions = [
         {
@@ -336,9 +335,10 @@
                 sendButton.disabled = false;
             }
         } else {
-            // Handle subsequent messages if needed
+            // Manejar mensajes subsiguientes si es necesario
         }
     });
 
     displayMessages();
 });
+
